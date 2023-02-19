@@ -28,7 +28,7 @@ RUN apk add --no-cache \
   php81-xml \
   php81-xmlreader \
   php81-sqlite3 \
-  #php81-pdo_sqlite \
+  php81-pdo_sqlite \
   php81-fileinfo \
   php81-json \
   php81-openssl \
