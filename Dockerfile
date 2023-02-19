@@ -84,6 +84,8 @@ USER nobody
 # Expose the port nginx is reachable on
 EXPOSE 80
 
+VOLUME /var/www/garradin
+
 # Let supervisord start nginx & php-fpm
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
