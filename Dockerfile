@@ -5,8 +5,8 @@ LABEL Description="Lightweight Paheko 1.2.6 container with Nginx 1.22 & PHP 8.1 
 # Setup document root
 WORKDIR /var/www/
 
-RUN groupmod -g 1000 users
-RUN usermod -G users -d /var/www nobody
+RUN groupmod -g 100 users
+RUN usermod -u 99 -G users -d /var/www nobody
 
 # Change the version here
 ENV GARRADIN_VERSION 1.2.6
