@@ -11,6 +11,7 @@ ENV GARRADIN_VERSION 1.2.6
 # Install packages and remove default server definition
 RUN apk add --no-cache \
   curl \
+  shadow \
   nginx \
   php81 \
   php81-ctype \
@@ -78,10 +79,12 @@ RUN chown -R nobody.nobody /var/www/garradin /run /var/lib/nginx /var/log/nginx
 # Switch to use a non-root user from here on
 
 # RUN addgroup -g 1001 -S appuser && adduser -u 1001 -S appuser -G appuser 
+RUN groupadd -g 1000 users
+RUN usermod -G users nobody
 
 RUN chown -R nobody:users /var/www
 
-USER nobody
+# USER nobody
 
 # Add application
 # COPY --chown=nobody src/ /var/www/html/
