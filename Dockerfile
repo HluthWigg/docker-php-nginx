@@ -76,10 +76,12 @@ COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chown -R nobody.nobody /var/www/garradin /run /var/lib/nginx /var/log/nginx
 
 # Switch to use a non-root user from here on
-USER nobody
+
 # RUN addgroup -g 1001 -S appuser && adduser -u 1001 -S appuser -G appuser 
 
 RUN chown -R nobody:users /var/www
+
+USER nobody
 
 # Add application
 # COPY --chown=nobody src/ /var/www/html/
