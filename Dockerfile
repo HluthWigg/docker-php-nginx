@@ -77,6 +77,9 @@ RUN chown -R nobody.nobody /var/www/garradin /run /var/lib/nginx /var/log/nginx
 
 # Switch to use a non-root user from here on
 USER nobody
+RUN usermod -u 99 nobody
+RUN usermod -g 100 nobody
+RUN chown -R nobody:users /var/www
 
 # Add application
 # COPY --chown=nobody src/ /var/www/html/
