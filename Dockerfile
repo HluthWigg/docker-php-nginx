@@ -5,6 +5,9 @@ LABEL Description="Lightweight Paheko 1.2.6 container with Nginx 1.22 & PHP 8.1 
 # Setup document root
 WORKDIR /var/www/
 
+RUN groupmod -g 1000 users
+RUN usermod -G users -d /var/www nobody
+
 # Change the version here
 ENV GARRADIN_VERSION 1.2.6
 
@@ -79,8 +82,6 @@ RUN chown -R nobody.nobody /var/www/garradin /run /var/lib/nginx /var/log/nginx
 # Switch to use a non-root user from here on
 
 # RUN addgroup -g 1001 -S appuser && adduser -u 1001 -S appuser -G appuser 
-RUN groupmod -g 1000 users
-RUN usermod -G users nobody
 
 RUN chown -R nobody:users /var/www
 
